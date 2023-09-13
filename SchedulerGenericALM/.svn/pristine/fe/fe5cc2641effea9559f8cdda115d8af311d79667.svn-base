@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<adfc-config xmlns="http://xmlns.oracle.com/adf/controller" version="1.2">
+  <view id="Schedule">
+    <page>/Schedule.jspx</page>
+    <bookmark id="__5">
+      <url-parameter>
+        <name>jwt</name>
+        <value>#{pageFlowScope.token}</value>
+      </url-parameter>
+    </bookmark>
+  </view>
+  <managed-bean id="__2">
+    <managed-bean-name id="__4">backing_ScheduleFrag</managed-bean-name>
+    <managed-bean-class id="__3">view.backing.ScheduleFrag</managed-bean-class>
+    <managed-bean-scope id="__1">backingBean</managed-bean-scope>
+    <!--oracle-jdev-comment:managed-bean-jsp-link:1ScheduleFrag.jsff-->
+  </managed-bean>
+</adfc-config>

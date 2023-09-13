@@ -1,0 +1,520 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:f="http://java.sun.com/jsf/core">
+  <!--oracle-jdev-comment:auto-binding-backing-bean-name:backing_ScheduleFrag-->
+  <af:panelGroupLayout binding="#{backingBeanScope.backing_ScheduleFrag.pgl2}"
+                       id="pgl2" layout="vertical" halign="center">
+    <af:panelGroupLayout binding="#{backingBeanScope.backing_ScheduleFrag.pgl4}"
+                         id="pgl4" halign="center" styleClass="AFStretchWidth">
+      <af:outputText value="SCHEDULER APPLICATION"
+                     binding="#{backingBeanScope.backing_ScheduleFrag.ot20}"
+                     id="ot20"
+                     inlineStyle="font-weight:bold; font-size:x-large; font-family:'Times New Roman', 'Arial Black', times, Serif; height:30px;"/>
+    </af:panelGroupLayout>
+    <af:spacer width="10" height="30"
+               binding="#{backingBeanScope.backing_ScheduleFrag.s13}" id="s13"/>
+    <af:panelCollection binding="#{backingBeanScope.backing_ScheduleFrag.pc1}"
+                        id="pc1" styleClass="AFStretchWidth">
+      <f:facet name="toolbar">
+        <af:toolbar binding="#{backingBeanScope.backing_ScheduleFrag.t2}"
+                    id="t2" flex="1">
+          <af:commandToolbarButton actionListener="#{bindings.CreateInsert.execute}"
+                                   text="Add"
+                                   binding="#{backingBeanScope.backing_ScheduleFrag.ctb1}"
+                                   id="ctb1" rendered="false"/>
+          <af:commandImageLink actionListener="#{bindings.CreateInsert.execute}"
+                               accessKey="#{backingBeanScope.backing_ScheduleFrag.cil2}"
+                               id="cil2" icon="/images/add.png"
+                               hoverIcon="/images/add_en.png" shortDesc="Add"
+                               rendered="false"/>
+          <af:spacer width="15" height="10"
+                     binding="#{backingBeanScope.backing_ScheduleFrag.s1}"
+                     id="s1" rendered="false"/>
+          <af:commandToolbarButton actionListener="#{bindings.Execute.execute}"
+                                   text="Refresh"
+                                   disabled="#{!bindings.Execute.enabled}"
+                                   binding="#{backingBeanScope.backing_ScheduleFrag.ctb2}"
+                                   id="ctb2" rendered="false"/>
+          <af:commandImageLink actionListener="#{bindings.Execute.execute}"
+                               binding="#{backingBeanScope.backing_ScheduleFrag.cil4}"
+                               id="cil4" icon="/images/refersh.png"
+                               hoverIcon="/images/refersh_en.png"
+                               shortDesc="Refresh" text="Refresh"
+                               rendered="false"/>
+          <af:spacer width="10" height="10"
+                     binding="#{backingBeanScope.backing_ScheduleFrag.s3}"
+                     id="s3" rendered="false"/>
+          <af:commandButton actionListener="#{bindings.Commit.execute}"
+                            text="Save"
+                            binding="#{backingBeanScope.backing_ScheduleFrag.cb4}"
+                            id="cb4" rendered="false"/>
+          <af:commandImageLink actionListener="#{bindings.Commit.execute}"
+                               binding="#{backingBeanScope.backing_ScheduleFrag.cil3}"
+                               id="cil3" icon="/images/save.png"
+                               hoverIcon="/images/save_en.png"
+                               shortDesc="Save" rendered="false"/>
+          <af:spacer width="20" height="10"
+                     binding="#{backingBeanScope.backing_ScheduleFrag.s8}"
+                     id="s8" rendered="false"/>
+          <af:separator binding="#{backingBeanScope.backing_ScheduleFrag.s4}"
+                        id="s4" rendered="false"/>
+          <af:spacer width="20" height="10"
+                     binding="#{backingBeanScope.backing_ScheduleFrag.s7}"
+                     id="s7" rendered="true"/>
+          <af:commandButton text="Invoke"
+                            binding="#{backingBeanScope.backing_ScheduleFrag.cb1}"
+                            id="cb1"
+                            disabled="#{bindings.RunStatus=='Y'?'true':'false'}"
+                            actionListener="#{backingBeanScope.backing_ScheduleFrag.invoke}"/>
+          <af:spacer width="10" height="10"
+                     binding="#{backingBeanScope.backing_ScheduleFrag.s5}"
+                     id="s5"/>
+          <af:commandButton text="Stop"
+                            binding="#{backingBeanScope.backing_ScheduleFrag.cb2}"
+                            id="cb2"
+                            actionListener="#{backingBeanScope.backing_ScheduleFrag.onStop}"/>
+          <af:spacer width="40" height="10"
+                     binding="#{backingBeanScope.backing_ScheduleFrag.s6}"
+                     id="s6"/>
+          <af:inputText label="Back Off Duration"
+                        binding="#{backingBeanScope.backing_ScheduleFrag.it9}"
+                        id="it9"
+                        disabled="#{bindings.RunStatus=='Y'?'true':'false'}"
+                        value="2" readOnly="true"/>
+          <af:spacer width="40" height="10"
+                     binding="#{backingBeanScope.backing_ScheduleFrag.s9}"
+                     id="s9"/>
+          <af:panelLabelAndMessage label="Scheduler Status "
+                                   binding="#{backingBeanScope.backing_ScheduleFrag.plam1}"
+                                   id="plam1">
+            <af:outputText value="#{bindings.RunStatus.inputValue=='Y'?'RUNNING':'STOPPED'}"
+                           binding="#{backingBeanScope.backing_ScheduleFrag.ot19}"
+                           id="ot19"
+                           inlineStyle="color:#{bindings.RunStatus.inputValue=='Y'?'GREEN':'RED'};"/>
+          </af:panelLabelAndMessage>
+          <af:spacer width="20" height="10"
+                     binding="#{backingBeanScope.backing_ScheduleFrag.s10}"
+                     id="s10"/>
+          <af:separator binding="#{backingBeanScope.backing_ScheduleFrag.s12}"
+                        id="s12"/>
+          <af:spacer width="40" height="10"
+                     binding="#{backingBeanScope.backing_ScheduleFrag.s11}"
+                     id="s11"/>
+          <af:commandToolbarButton text="Credentials"
+                                   binding="#{backingBeanScope.backing_ScheduleFrag.ctb3}"
+                                   id="ctb3"
+                                   disabled="#{bindings.RunStatus.inputValue=='Y'?'true':'false'}">
+            <af:showPopupBehavior popupId="::p1" triggerType="action"/>
+          </af:commandToolbarButton>
+        </af:toolbar>
+      </f:facet>
+      <af:table value="#{bindings.XxfndScheduleT_VO2.collectionModel}" var="row"
+                rows="#{bindings.XxfndScheduleT_VO2.rangeSize}"
+                emptyText="#{bindings.XxfndScheduleT_VO2.viewable ? 'No data to display.' : 'Access Denied.'}"
+                fetchSize="#{bindings.XxfndScheduleT_VO2.rangeSize}"
+                rowBandingInterval="0"
+                selectedRowKeys="#{bindings.XxfndScheduleT_VO2.collectionModel.selectedRow}"
+                selectionListener="#{bindings.XxfndScheduleT_VO2.collectionModel.makeCurrent}"
+                rowSelection="single"
+                binding="#{backingBeanScope.backing_ScheduleFrag.t1}" id="t1"
+                partialTriggers="::cil2 ::cil4 cil1 ::ctb1 ::ctb2 cb3" summary="Schedule Table"
+                varStatus="vs">
+        <af:column id="c28" headerText="S. No" align="center" width="60">
+          <af:outputText value="#{vs.index+1}" id="ot24"/>
+        </af:column>
+        <af:column sortProperty="#{bindings.XxfndScheduleT_VO2.hints.ScheduleName.name}"
+                   sortable="false" headerText="Scheduler Name" id="c3"
+                   width="160">
+          <af:selectOneChoice value="#{row.bindings.ScheduleName.inputValue}"
+                              label="#{row.bindings.ScheduleName.label}"
+                              required="#{bindings.XxfndScheduleT_VO2.hints.ScheduleName.mandatory}"
+                              shortDesc="#{bindings.XxfndScheduleT_VO2.hints.ScheduleName.tooltip}"
+                              id="soc1" autoSubmit="true" rendered="false">
+            <f:selectItems value="#{row.bindings.ScheduleName.items}" id="si1"/>
+          </af:selectOneChoice>
+          <af:inputText value="#{row.bindings.ScheduleName.inputValue}"
+                        simple="true"
+                        required="#{bindings.XxfndScheduleT_VO2.hints.ScheduleName.mandatory}"
+                        columns="#{bindings.XxfndScheduleT_VO2.hints.ScheduleName.displayWidth}"
+                        maximumLength="#{bindings.XxfndScheduleT_VO2.hints.ScheduleName.precision}"
+                        shortDesc="#{bindings.XxfndScheduleT_VO2.hints.ScheduleName.tooltip}"
+                        id="it1" readOnly="true">
+            <f:validator binding="#{row.bindings.ScheduleName.validator}"/>
+          </af:inputText>
+        </af:column>
+        <af:column sortProperty="#{bindings.XxfndScheduleT_VO2.hints.FrequencyMin.name}"
+                   sortable="false" headerText="Refresh Frequency (min)" id="c2"
+                   align="center">
+          <af:inputText value="#{row.bindings.FrequencyMin.inputValue}"
+                        label="#{bindings.XxfndScheduleT_VO2.hints.FrequencyMin.label}"
+                        required="#{bindings.XxfndScheduleT_VO2.hints.FrequencyMin.mandatory}"
+                        columns="#{bindings.XxfndScheduleT_VO2.hints.FrequencyMin.displayWidth}"
+                        maximumLength="#{bindings.XxfndScheduleT_VO2.hints.FrequencyMin.precision}"
+                        shortDesc="#{bindings.XxfndScheduleT_VO2.hints.FrequencyMin.tooltip}"
+                        id="it8">
+            <f:validator binding="#{row.bindings.FrequencyMin.validator}"/>
+            <af:convertNumber groupingUsed="false"
+                              pattern="#{bindings.XxfndScheduleT_VO2.hints.FrequencyMin.format}"/>
+          </af:inputText>
+        </af:column>
+        <af:column sortProperty="#{bindings.XxfndScheduleT_VO2.hints.ProgramName.name}"
+                   sortable="false"
+                   headerText="#{bindings.XxfndScheduleT_VO2.hints.ProgramName.label}"
+                   id="c7" rendered="false" width="140">
+          <af:inputText value="#{row.bindings.ProgramName.inputValue}"
+                        label="#{bindings.XxfndScheduleT_VO2.hints.ProgramName.label}"
+                        required="#{bindings.XxfndScheduleT_VO2.hints.ProgramName.mandatory}"
+                        columns="#{bindings.XxfndScheduleT_VO2.hints.ProgramName.displayWidth}"
+                        maximumLength="#{bindings.XxfndScheduleT_VO2.hints.ProgramName.precision}"
+                        shortDesc="#{bindings.XxfndScheduleT_VO2.hints.ProgramName.tooltip}"
+                        id="it7" readOnly="true" partialTriggers="si1">
+            <f:validator binding="#{row.bindings.ProgramName.validator}"/>
+          </af:inputText>
+        </af:column>
+        <af:column sortProperty="#{bindings.XxfndScheduleT_VO2.hints.BiReportPath.name}"
+                   sortable="false" headerText="Report Path" id="c8"
+                   width="240">
+          <af:inputText value="#{row.bindings.BiReportPath.inputValue}"
+                        label="#{bindings.XxfndScheduleT_VO2.hints.BiReportPath.label}"
+                        required="#{bindings.XxfndScheduleT_VO2.hints.BiReportPath.mandatory}"
+                        columns="#{bindings.XxfndScheduleT_VO2.hints.BiReportPath.displayWidth}"
+                        maximumLength="#{bindings.XxfndScheduleT_VO2.hints.BiReportPath.precision}"
+                        shortDesc="#{bindings.XxfndScheduleT_VO2.hints.BiReportPath.tooltip}"
+                        id="it3" readOnly="true">
+            <f:validator binding="#{row.bindings.BiReportPath.validator}"/>
+          </af:inputText>
+        </af:column>
+        <af:column sortProperty="#{bindings.XxfndScheduleT_VO2.hints.BiReportName.name}"
+                   sortable="true" headerText="Report Name" id="c1" width="150">
+          <af:inputText value="#{row.bindings.BiReportName.inputValue}"
+                        label="#{bindings.XxfndScheduleT_VO2.hints.BiReportName.label}"
+                        required="#{bindings.XxfndScheduleT_VO2.hints.BiReportName.mandatory}"
+                        columns="#{bindings.XxfndScheduleT_VO2.hints.BiReportName.displayWidth}"
+                        maximumLength="#{bindings.XxfndScheduleT_VO2.hints.BiReportName.precision}"
+                        shortDesc="#{bindings.XxfndScheduleT_VO2.hints.BiReportName.tooltip}"
+                        id="it4" readOnly="true">
+            <f:validator binding="#{row.bindings.BiReportName.validator}"/>
+          </af:inputText>
+        </af:column>
+        <af:column sortProperty="#{bindings.XxfndScheduleT_VO2.hints.DbRefreshPkg.name}"
+                   sortable="false" headerText="Refresh Package" id="c9"
+                   width="250">
+          <af:inputText value="#{row.bindings.DbRefreshPkg.inputValue}"
+                        label="#{bindings.XxfndScheduleT_VO2.hints.DbRefreshPkg.label}"
+                        required="#{bindings.XxfndScheduleT_VO2.hints.DbRefreshPkg.mandatory}"
+                        columns="#{bindings.XxfndScheduleT_VO2.hints.DbRefreshPkg.displayWidth}"
+                        maximumLength="#{bindings.XxfndScheduleT_VO2.hints.DbRefreshPkg.precision}"
+                        shortDesc="#{bindings.XxfndScheduleT_VO2.hints.DbRefreshPkg.tooltip}"
+                        id="it5" readOnly="true">
+            <f:validator binding="#{row.bindings.DbRefreshPkg.validator}"/>
+          </af:inputText>
+        </af:column>
+        <af:column headerText="Application Name"
+                   id="c27" width="160" rendered="false">
+          <af:inputText value="#{row.bindings.ApplicationName.inputValue}"
+                        label="#{bindings.XxfndScheduleT_VO2.hints.ApplicationName.label}"
+                        required="#{bindings.XxfndScheduleT_VO2.hints.ApplicationName.mandatory}"
+                        columns="#{bindings.XxfndScheduleT_VO2.hints.ApplicationName.displayWidth}"
+                        maximumLength="#{bindings.XxfndScheduleT_VO2.hints.ApplicationName.precision}"
+                        shortDesc="#{bindings.XxfndScheduleT_VO2.hints.ApplicationName.tooltip}"
+                        id="it10" rendered="false">
+            <f:validator binding="#{row.bindings.ApplicationName.validator}"/>
+          </af:inputText>
+          <af:selectOneChoice value="#{row.bindings.ApplicationName.inputValue}"
+                              label="#{row.bindings.ApplicationName.label}"
+                              required="#{bindings.XxfndScheduleT_VO2.hints.ApplicationName.mandatory}"
+                              shortDesc="#{bindings.XxfndScheduleT_VO2.hints.ApplicationName.tooltip}"
+                              id="soc2">
+            <f:selectItems value="#{row.bindings.ApplicationName.items}"
+                           id="si2"/>
+          </af:selectOneChoice>
+        </af:column>
+        <af:column sortProperty="#{bindings.XxfndScheduleT_VO2.hints.NextScheduleTime.name}"
+                   sortable="false" headerText="Next Refresh Time" id="c6"
+                   width="140" rendered="false">
+          <af:inputDate value="#{row.bindings.NextScheduleTime.inputValue}"
+                        label="#{bindings.XxfndScheduleT_VO2.hints.NextScheduleTime.label}"
+                        required="#{bindings.XxfndScheduleT_VO2.hints.NextScheduleTime.mandatory}"
+                        shortDesc="#{bindings.XxfndScheduleT_VO2.hints.NextScheduleTime.tooltip}"
+                        id="id1" disabled="true" rendered="false">
+            <f:validator binding="#{row.bindings.NextScheduleTime.validator}"/>
+            <af:convertDateTime pattern="#{bindings.XxfndScheduleT_VO2.hints.NextScheduleTime.format}"/>
+          </af:inputDate>
+          <af:outputText value="#{row.NextScheduleTime}" id="ot1">
+            <af:convertDateTime pattern="#{bindings.XxfndScheduleT_VO2.hints.NextScheduleTime.format}"/>
+          </af:outputText>
+        </af:column>
+        <af:column sortProperty="#{bindings.XxfndScheduleT_VO2.hints.Status.name}"
+                   sortable="false" id="c4" align="center" width="80">
+          <af:inputText value="#{row.bindings.Status.inputValue}"
+                        label="#{bindings.XxfndScheduleT_VO2.hints.Status.label}"
+                        required="#{bindings.XxfndScheduleT_VO2.hints.Status.mandatory}"
+                        columns="#{bindings.XxfndScheduleT_VO2.hints.Status.displayWidth}"
+                        maximumLength="#{bindings.XxfndScheduleT_VO2.hints.Status.precision}"
+                        shortDesc="#{bindings.XxfndScheduleT_VO2.hints.Status.tooltip}"
+                        id="it6" rendered="false">
+            <f:validator binding="#{row.bindings.Status.validator}"/>
+          </af:inputText>
+          <af:selectBooleanCheckbox value="#{row.bindings.Status.inputValue}"
+                                    label="#{row.bindings.Status.label}"
+                                    shortDesc="#{bindings.XxfndScheduleT_VO2.hints.Status.tooltip}"
+                                    id="sbc1"/>
+          <f:facet name="header">
+            <af:panelGroupLayout binding="#{backingBeanScope.backing_ScheduleFrag.pgl3}"
+                                 id="pgl3">
+              <af:outputText value="Active"
+                             binding="#{backingBeanScope.backing_ScheduleFrag.ot18}"
+                             id="ot18"/>
+              <af:selectBooleanCheckbox binding="#{backingBeanScope.backing_ScheduleFrag.sbc2}"
+                                        id="sbc2" autoSubmit="true"
+                                        valueChangeListener="#{backingBeanScope.backing_ScheduleFrag.onClickStat}"/>
+            </af:panelGroupLayout>
+          </f:facet>
+        </af:column>
+        <af:column sortProperty="#{bindings.XxfndScheduleT_VO2.hints.RunStatus.name}"
+                   sortable="false" headerText="Scheduler Status" id="c5"
+                   align="center" width="80" rendered="false">
+          <af:inputText value="#{row.bindings.RunStatus.inputValue=='Y'?'RUNNING':'STOPPED'}"
+                        label="#{bindings.XxfndScheduleT_VO2.hints.RunStatus.label}"
+                        required="#{bindings.XxfndScheduleT_VO2.hints.RunStatus.mandatory}"
+                        columns="#{bindings.XxfndScheduleT_VO2.hints.RunStatus.displayWidth}"
+                        maximumLength="#{bindings.XxfndScheduleT_VO2.hints.RunStatus.precision}"
+                        shortDesc="#{bindings.XxfndScheduleT_VO2.hints.RunStatus.tooltip}"
+                        id="it2" readOnly="true">
+            <f:validator binding="#{row.bindings.RunStatus.validator}"/>
+          </af:inputText>
+        </af:column>
+        <af:column id="c26" align="center" width="50" rendered="false">
+          <af:commandButton actionListener="#{bindings.Delete.execute}" id="cb3"
+                            icon="/images/delete.png"
+                            shortDesc="Delete row in table" rendered="false"/>
+          <af:commandImageLink id="cil1" icon="/images/delete.png"
+                               shortDesc="Delete"
+                               actionListener="#{bindings.Delete.execute}"
+                               hoverIcon="/images/delete_en.png"/>
+        </af:column>
+      </af:table>
+    </af:panelCollection>
+    <af:separator binding="#{backingBeanScope.backing_ScheduleFrag.s2}"
+                  id="s2"/>
+    <af:panelCollection binding="#{backingBeanScope.backing_ScheduleFrag.pc2}"
+                        id="pc2" styleClass="AFStretchWidth" rendered="true">
+      <af:table value="#{bindings.XxfndScheduleListT_VO2.collectionModel}"
+                var="row" rows="#{bindings.XxfndScheduleListT_VO2.rangeSize}"
+                emptyText="#{bindings.XxfndScheduleListT_VO2.viewable ? 'No data to display.' : 'Access Denied.'}"
+                fetchSize="10"
+                rowBandingInterval="1"
+                binding="#{backingBeanScope.backing_ScheduleFrag.t3}" id="t3"
+                summary="Schedule List table" autoHeightRows="0"
+                scrollPolicy="page">
+        <af:column sortProperty="#{bindings.XxfndScheduleListT_VO2.hints.ScheduleListId.name}"
+                   sortable="true"
+                   headerText="#{bindings.XxfndScheduleListT_VO2.hints.ScheduleListId.label}"
+                   id="c22" rendered="false">
+          <af:outputText value="#{row.ScheduleListId}" id="ot2">
+            <af:convertNumber groupingUsed="false"
+                              pattern="#{bindings.XxfndScheduleListT_VO2.hints.ScheduleListId.format}"/>
+          </af:outputText>
+        </af:column>
+        <af:column sortProperty="#{bindings.XxfndScheduleListT_VO2.hints.ScheduleId.name}"
+                   sortable="true"
+                   headerText="#{bindings.XxfndScheduleListT_VO2.hints.ScheduleId.label}"
+                   id="c15" rendered="false">
+          <af:outputText value="#{row.ScheduleId}" id="ot10">
+            <af:convertNumber groupingUsed="false"
+                              pattern="#{bindings.XxfndScheduleListT_VO2.hints.ScheduleId.format}"/>
+          </af:outputText>
+        </af:column>
+        <af:column sortProperty="#{bindings.XxfndScheduleListT_VO2.hints.ScheduleName.name}"
+                   sortable="true"
+                   headerText="Scheduler Name"
+                   id="c21" width="150">
+          <af:outputText value="#{row.ScheduleName}" id="ot6"/>
+        </af:column>
+        <af:column sortProperty="#{bindings.XxfndScheduleListT_VO2.hints.ProgramName.name}"
+                   sortable="true"
+                   headerText="#{bindings.XxfndScheduleListT_VO2.hints.ProgramName.label}"
+                   id="c10" rendered="false">
+          <af:outputText value="#{row.ProgramName}" id="ot13"/>
+        </af:column>
+        <af:column sortProperty="#{bindings.XxfndScheduleListT_VO2.hints.BiReportPath.name}"
+                   sortable="true" headerText="Report Path" id="c14"
+                   width="170">
+          <af:outputText value="#{row.BiReportPath}" id="ot14"/>
+        </af:column>
+        <af:column sortProperty="#{bindings.XxfndScheduleListT_VO2.hints.BiReportName.name}"
+                   sortable="true" headerText="Report Name" id="c12"
+                   width="150">
+          <af:outputText value="#{row.BiReportName}" id="ot11"/>
+        </af:column>
+        <af:column sortProperty="#{bindings.XxfndScheduleListT_VO2.hints.DbRefreshPkg.name}"
+                   sortable="true" headerText="Refresh Package" id="c19"
+                   width="200">
+          <af:outputText value="#{row.DbRefreshPkg}" id="ot7"/>
+        </af:column>
+        <af:column sortProperty="#{bindings.XxfndScheduleListT_VO2.hints.LastRefreshTime.name}"
+                   sortable="true"
+                   headerText="Last Refresh Time"
+                   id="c24" width="140" rendered="false">
+          <af:outputText value="#{row.LastRefreshTime}" id="ot5">
+            <af:convertDateTime pattern="#{bindings.XxfndScheduleListT_VO2.hints.LastRefreshTime.format}"/>
+          </af:outputText>
+        </af:column>
+        <af:column sortProperty="#{bindings.XxfndScheduleListT_VO2.hints.ScheduleStatus.name}"
+                   sortable="true"
+                   headerText="Schedule Status"
+                   id="c23" width="120">
+          <af:outputText value="#{row.ScheduleStatus}" id="ot9"/>
+        </af:column>
+        <af:column sortProperty="#{bindings.XxfndScheduleListT_VO2.hints.ErrorMessage.name}"
+                   sortable="false"
+                   headerText="Error Message"
+                   id="c13" width="250">
+          <af:outputText value="#{row.ErrorMessage}" id="ot17"/>
+        </af:column>
+        <af:column sortProperty="#{bindings.XxfndScheduleListT_VO2.hints.CreatedBy.name}"
+                   sortable="false"
+                   headerText="#{bindings.XxfndScheduleListT_VO2.hints.CreatedBy.label}"
+                   id="c25" rendered="false">
+          <af:outputText value="#{row.CreatedBy}" id="ot15"/>
+        </af:column>
+        <af:column sortProperty="#{bindings.XxfndScheduleListT_VO2.hints.CreationDate.name}"
+                   sortable="false"
+                   headerText="#{bindings.XxfndScheduleListT_VO2.hints.CreationDate.label}"
+                   id="c16" rendered="false">
+          <af:outputText value="#{row.CreationDate}" id="ot16">
+            <af:convertDateTime pattern="#{bindings.XxfndScheduleListT_VO2.hints.CreationDate.format}"/>
+          </af:outputText>
+        </af:column>
+        <af:column sortProperty="#{bindings.XxfndScheduleListT_VO2.hints.LastUpdatedBy.name}"
+                   sortable="false"
+                   headerText="#{bindings.XxfndScheduleListT_VO2.hints.LastUpdatedBy.label}"
+                   id="c20" rendered="false">
+          <af:outputText value="#{row.LastUpdatedBy}" id="ot4"/>
+        </af:column>
+        <af:column sortProperty="#{bindings.XxfndScheduleListT_VO2.hints.LastUpdateDate.name}"
+                   sortable="false"
+                   headerText="#{bindings.XxfndScheduleListT_VO2.hints.LastUpdateDate.label}"
+                   id="c11" rendered="false">
+          <af:outputText value="#{row.LastUpdateDate}" id="ot8">
+            <af:convertDateTime pattern="#{bindings.XxfndScheduleListT_VO2.hints.LastUpdateDate.format}"/>
+          </af:outputText>
+        </af:column>
+        <af:column sortProperty="#{bindings.XxfndScheduleListT_VO2.hints.LastUpdateLogin.name}"
+                   sortable="false"
+                   headerText="#{bindings.XxfndScheduleListT_VO2.hints.LastUpdateLogin.label}"
+                   id="c18" rendered="false">
+          <af:outputText value="#{row.LastUpdateLogin}" id="ot3"/>
+        </af:column>
+        <af:column sortProperty="#{bindings.XxfndScheduleListT_VO2.hints.RowID.name}"
+                   sortable="false"
+                   headerText="#{bindings.XxfndScheduleListT_VO2.hints.RowID.label}"
+                   id="c17" rendered="false">
+          <af:outputText value="#{row.RowID}" id="ot12"/>
+        </af:column>
+      </af:table>
+    </af:panelCollection>
+    <af:popup binding="#{backingBeanScope.backing_ScheduleFrag.p1}" id="p1">
+      <af:dialog binding="#{backingBeanScope.backing_ScheduleFrag.d1}" id="d1"
+                 title="Credentials" styleClass="AFStretchWidth"
+                 inlineStyle="width:400px;"
+                 dialogListener="#{backingBeanScope.backing_ScheduleFrag.onClckOk}">
+        <af:panelGroupLayout binding="#{backingBeanScope.backing_ScheduleFrag.pgl1}"
+                             id="pgl1"
+                             styleClass="AFStretchWidth" halign="center">
+          <af:panelGridLayout binding="#{backingBeanScope.backing_ScheduleFrag.pgl5}"
+                              id="pgl5" styleClass="AFStretchWidth">
+            <af:gridRow marginTop="5px" height="auto"
+                        binding="#{backingBeanScope.backing_ScheduleFrag.gr1}"
+                        id="gr1">
+              <af:gridCell marginStart="5px" width="100px"
+                           binding="#{backingBeanScope.backing_ScheduleFrag.gc1}"
+                           id="gc1" halign="end">
+                <af:outputText value="URL"
+                               binding="#{backingBeanScope.backing_ScheduleFrag.ot21}"
+                               id="ot21"/>
+              </af:gridCell>
+              <af:gridCell marginStart="5px" width="200px" marginEnd="5px"
+                           binding="#{backingBeanScope.backing_ScheduleFrag.gc2}"
+                           id="gc2">
+                <af:inputText
+                              binding="#{backingBeanScope.backing_ScheduleFrag.it11}"
+                              id="it11" required="true"
+                              inlineStyle="width:200px;"
+                              styleClass="AFStretchWidth"
+                              rendered="false"/>
+                <af:inputText value="#{bindings.FusionDomain.inputValue}"
+                              required="true"
+                              maximumLength="#{bindings.FusionDomain.hints.precision}"
+                              binding="#{backingBeanScope.backing_ScheduleFrag.it14}"
+                              id="it14" inlineStyle="width:200px;"
+                              styleClass="AFStretchWidth">
+                  <f:validator binding="#{bindings.FusionDomain.validator}"/>
+                </af:inputText>
+              </af:gridCell>
+            </af:gridRow>
+            <af:gridRow marginTop="5px" height="auto"
+                        binding="#{backingBeanScope.backing_ScheduleFrag.gr2}"
+                        id="gr2">
+              <af:gridCell marginStart="5px" width="100px"
+                           binding="#{backingBeanScope.backing_ScheduleFrag.gc3}"
+                           id="gc3" halign="end">
+                <af:outputText value="Username"
+                               binding="#{backingBeanScope.backing_ScheduleFrag.ot22}"
+                               id="ot22"/>
+              </af:gridCell>
+              <af:gridCell marginStart="5px" width="200px" marginEnd="5px"
+                           binding="#{backingBeanScope.backing_ScheduleFrag.gc4}"
+                           id="gc4">
+                <af:inputText
+                              binding="#{backingBeanScope.backing_ScheduleFrag.it12}"
+                              id="it12" required="true"
+                              inlineStyle="width:200px;"
+                              styleClass="AFStretchWidth" rendered="false"/>
+                <af:inputText value="#{bindings.FusionUsername.inputValue}"
+                              required="true"
+                              maximumLength="#{bindings.FusionUsername.hints.precision}"
+                              binding="#{backingBeanScope.backing_ScheduleFrag.it15}"
+                              inlineStyle="width:200px;"
+                              styleClass="AFStretchWidth"
+                              id="it15">
+                  <f:validator binding="#{bindings.FusionUsername.validator}"/>
+                </af:inputText>
+              </af:gridCell>
+            </af:gridRow>
+            <af:gridRow marginTop="5px" height="auto" marginBottom="5px"
+                        binding="#{backingBeanScope.backing_ScheduleFrag.gr3}"
+                        id="gr3">
+              <af:gridCell marginStart="5px" width="100px"
+                           binding="#{backingBeanScope.backing_ScheduleFrag.gc5}"
+                           id="gc5" halign="end">
+                <af:outputText value="Password"
+                               binding="#{backingBeanScope.backing_ScheduleFrag.ot23}"
+                               id="ot23"/>
+              </af:gridCell>
+              <af:gridCell marginStart="5px" width="200px" marginEnd="5px"
+                           binding="#{backingBeanScope.backing_ScheduleFrag.gc6}"
+                           id="gc6">
+                <af:inputText
+                              binding="#{backingBeanScope.backing_ScheduleFrag.it13}"
+                              id="it13" required="true" secret="true"
+                              inlineStyle="width:200px;"
+                              styleClass="AFStretchWidth" rendered="false"/>
+                <af:inputText value="#{bindings.FusionPassword.inputValue}"
+                              required="true"
+                              maximumLength="#{bindings.FusionPassword.hints.precision}"
+                              binding="#{backingBeanScope.backing_ScheduleFrag.it16}"
+                              inlineStyle="width:200px;"
+                              styleClass="AFStretchWidth"
+                              id="it16">
+                  <f:validator binding="#{bindings.FusionPassword.validator}"/>
+                </af:inputText>
+              </af:gridCell>
+            </af:gridRow>
+          </af:panelGridLayout>
+        </af:panelGroupLayout>
+      </af:dialog>
+    </af:popup>
+  </af:panelGroupLayout>
+</jsp:root>

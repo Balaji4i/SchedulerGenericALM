@@ -1,0 +1,17 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:f="http://java.sun.com/jsf/core"
+          xmlns:h="http://java.sun.com/jsf/html">
+  <af:decorativeBox id="db1">
+    <f:facet name="center">
+      <af:panelGroupLayout layout="scroll"
+                           xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+                           id="pgl1">
+        <af:outputText value="This User is not Applicable to Proceed......" id="ot1"
+                       inlineStyle="font-size:large;"/>
+      </af:panelGroupLayout>
+    </f:facet>
+    <f:facet name="top"/>
+  </af:decorativeBox>
+</jsp:root>

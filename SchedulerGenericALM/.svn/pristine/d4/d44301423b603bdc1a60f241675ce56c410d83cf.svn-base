@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel"
+                version="11.1.1.66.73" id="ScheduleFragPageDef"
+                Package="view.pageDefs">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="XxfndScheduleT_VO2" RangeSize="25"
+              DataControl="AppModuleDataControl"
+              id="XxfndScheduleT_VO2Iterator" ChangeEventPolicy="ppr"/>
+    <iterator Binds="XxfndScheduleListT_VO2" RangeSize="25"
+              DataControl="AppModuleDataControl"
+              id="XxfndScheduleListT_VO2Iterator" ChangeEventPolicy="ppr">
+              <sortCriteria>
+              <sort attribute="LastRefreshTime" ascending="false"/>
+              </sortCriteria>
+              </iterator>
+    <iterator Binds="XxpmSetupDetailVO1" RangeSize="25"
+              DataControl="AppModuleDataControl"
+              id="XxpmSetupDetailVO1Iterator"/>
+  </executables>
+  <bindings>
+    <tree IterBinding="XxfndScheduleT_VO2Iterator" id="XxfndScheduleT_VO2">
+      <nodeDefinition DefName="model.VO.XxfndScheduleT_VO"
+                      Name="XxfndScheduleT_VO20">
+        <AttrNames>
+          <Item Value="ScheduleName"/>
+          <Item Value="FrequencyMin"/>
+          <Item Value="ProgramName"/>
+          <Item Value="BiReportPath"/>
+          <Item Value="BiReportName"/>
+          <Item Value="DbRefreshPkg"/>
+          <Item Value="NextScheduleTime"/>
+          <Item Value="RunStatus"/>
+          <Item Value="Status" Binds="Status"/>
+          <Item Value="ApplicationName"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <action IterBinding="XxfndScheduleT_VO2Iterator" id="CreateInsert"
+            RequiresUpdateModel="true" Action="createInsertRow"/>
+    <button IterBinding="XxfndScheduleT_VO2Iterator" id="Status"
+            DTSupportsMRU="false" StaticList="true">
+      <AttrNames>
+        <Item Value="Status"/>
+      </AttrNames>
+      <ValueList>
+        <Item Value="Y"/>
+        <Item Value="N"/>
+      </ValueList>
+    </button>
+    <action id="Commit" DataControl="AppModuleDataControl"
+            RequiresUpdateModel="true" Action="commitTransaction"/>
+    <action IterBinding="XxfndScheduleT_VO2Iterator" id="Execute"
+            RequiresUpdateModel="true" Action="iteratorExecute"/>
+    <tree IterBinding="XxfndScheduleListT_VO2Iterator"
+          id="XxfndScheduleListT_VO2">
+      <nodeDefinition DefName="model.VO.XxfndScheduleListT_VO"
+                      Name="XxfndScheduleListT_VO20">
+        <AttrNames>
+          <Item Value="ScheduleListId"/>
+          <Item Value="ScheduleId"/>
+          <Item Value="ScheduleName"/>
+          <Item Value="ProgramName"/>
+          <Item Value="BiReportPath"/>
+          <Item Value="BiReportName"/>
+          <Item Value="DbRefreshPkg"/>
+          <Item Value="LastRefreshTime"/>
+          <Item Value="ScheduleStatus"/>
+          <Item Value="ErrorMessage"/>
+          <Item Value="CreatedBy"/>
+          <Item Value="CreationDate"/>
+          <Item Value="LastUpdatedBy"/>
+          <Item Value="LastUpdateDate"/>
+          <Item Value="LastUpdateLogin"/>
+          <Item Value="RowID"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <action IterBinding="XxfndScheduleT_VO2Iterator" id="Delete"
+            RequiresUpdateModel="false" Action="removeCurrentRow"/>
+    <attributeValues IterBinding="XxfndScheduleT_VO2Iterator" id="RunStatus">
+      <AttrNames>
+        <Item Value="RunStatus"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="XxpmSetupDetailVO1Iterator" id="FusionDomain">
+      <AttrNames>
+        <Item Value="FusionDomain"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="XxpmSetupDetailVO1Iterator"
+                     id="FusionUsername">
+      <AttrNames>
+        <Item Value="FusionUsername"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="XxpmSetupDetailVO1Iterator"
+                     id="FusionPassword">
+      <AttrNames>
+        <Item Value="FusionPassword"/>
+      </AttrNames>
+    </attributeValues>
+    <methodAction id="callCommit"
+                  InstanceName="AppModuleDataControl.dataProvider"
+                  DataControl="AppModuleDataControl" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="callCommit"
+                  IsViewObjectMethod="false"/>
+  </bindings>
+</pageDefinition>
